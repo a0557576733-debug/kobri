@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>عملاء رائد الحربي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #edf3ef;
+  --bg2: #dce8e0;
+  --ink: #122019;
+  --muted: #5a6b62;
+  --card: rgba(255,255,255,.88);
+  --line: rgba(18,32,25,.1);
+  --accent: #0d6b4c;
+  --accent-soft: rgba(13,107,76,.12);
+  --gold: #b8891f;
+  --danger: #9d3a2d;
+  --shadow: 0 16px 40px rgba(18,32,25,.08);
+  --radius: 16px;
+  --font: "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  --display: "Fraunces", "IBM Plex Sans Arabic", serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%;
+  font-family: var(--font); color: var(--ink);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(184,137,31,.16), transparent 30%),
+    radial-gradient(circle at 95% 8%, rgba(13,107,76,.14), transparent 34%),
+    linear-gradient(165deg, var(--bg), var(--bg2));
+}
+button, input, textarea, select { font: inherit; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: blur(10px);
+  padding: 18px;
+}
+.brand-mark { margin: 0; color: var(--accent); font-weight: 700; letter-spacing: .03em; }
+.muted { color: var(--muted); margin: 0 0 16px; }
+.field { display: grid; gap: 8px; margin-bottom: 14px; }
+.field span { font-size: .9rem; color: var(--muted); }
+input, textarea, select {
+  width: 100%; border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; background: #fff; color: var(--ink);
+}
+textarea { min-height: 110px; resize: vertical; }
+.btn {
+  border: 0; border-radius: 12px; padding: 11px 16px; cursor: pointer;
+  font-weight: 600; transition: .15s ease;
+}
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.secondary { background: #e8efe9; color: var(--ink); }
+.btn.ghost { background: transparent; border: 1px solid var(--line); }
+.btn.danger { background: rgba(157,58,45,.12); color: var(--danger); }
+.btn.small { padding: 7px 10px; font-size: .85rem; border-radius: 10px; }
+.btn:hover { filter: brightness(.98); transform: translateY(-1px); }
+.status { margin-top: 12px; color: var(--accent); }
+.app { min-height: 100vh; }
+.main { padding: 20px 24px 40px; max-width: 1200px; margin: 0 auto; }
+.topbar {
+  display: flex; justify-content: space-between; gap: 16px; align-items: flex-start;
+  margin-bottom: 16px;
+}
+.topbar h1 {
+  margin: 6px 0 4px; font-family: var(--display);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+}
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tab {
+  border: 1px solid var(--line); background: #fff; border-radius: 14px;
+  padding: 8px 16px; cursor: pointer; font-weight: 600; color: var(--muted);
+  display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 88px;
+}
+.tab-label { line-height: 1.2; }
+.tab-count {
+  font-size: .78rem; font-weight: 700; color: var(--accent);
+  font-variant-numeric: tabular-nums; line-height: 1.2;
+}
+.tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tab.active .tab-count { color: rgba(255,255,255,.92); }
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;
+  align-items: center; margin-bottom: 12px;
+}
+.search { min-width: min(280px, 100%); }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th { color: var(--muted); font-size: .86rem; white-space: nowrap; }
+.note-choices { max-width: 280px; }
+.note-choice {
+  border: 1px solid var(--line); background: #fff; color: var(--ink);
+  border-radius: 10px; padding: 6px 10px; cursor: pointer; font-size: .82rem; font-weight: 600;
+}
+.note-choice.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.notes-input {
+  width: 100%; min-width: 140px; max-width: 260px;
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 10px; background: #fff; color: var(--ink);
+  resize: vertical; min-height: 38px; max-height: 110px;
+}
+.order-input {
+  width: 100%; min-width: 110px; max-width: 140px;
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px 10px; background: #fff; color: var(--ink);
+  direction: ltr; unicode-bidi: plaintext; font-weight: 600;
+}
+.empty { text-align: center; color: var(--muted); padding: 28px !important; }
+.actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: .78rem;
+  background: #e7efe9; white-space: nowrap;
+}
+.badge.paused { background: rgba(157,58,45,.12); color: var(--danger); }
+.badge.active { background: var(--accent-soft); color: var(--accent); }
+.badge.followed { background: rgba(184,137,31,.16); color: #8a6414; }
+.badge.pending-follow { background: rgba(13,107,76,.1); color: var(--accent); }
+.work-choices { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-choice {
+  border: 1px solid var(--line); background: #fff; color: var(--ink);
+  border-radius: 10px; padding: 6px 10px; cursor: pointer; font-size: .82rem; font-weight: 600;
+}
+.work-choice.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.phone-link {
+  font-weight: 700; direction: ltr; unicode-bidi: plaintext;
+  display: inline-block; color: var(--accent); text-decoration: none;
+}
+.phone-link:hover { text-decoration: underline; }
+.meta-line { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+.backup-panel > summary {
+  cursor: pointer; list-style: none; font-weight: 700; font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.backup-panel > summary::-webkit-details-marker { display: none; }
+.backup-panel > summary::after {
+  content: "▾"; color: var(--muted); font-size: .9rem; transition: transform .15s ease;
+}
+.backup-panel[open] > summary::after { transform: rotate(180deg); }
+.backup-panel > summary + * { margin-top: 12px; }
+.error-banner {
+  display: none; margin-bottom: 14px; padding: 12px 14px;
+  border-radius: 12px; border: 1px solid rgba(157,58,45,.35);
+  background: rgba(157,58,45,.08); color: var(--danger); font-weight: 600;
+}
+@media (max-width: 720px) {
+  .main { padding: 14px 12px 40px; }
+  .topbar { flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .topbar .btn, .btn-row .btn, .toolbar .btn { width: 100%; }
+  .btn-row { width: 100%; }
+  .btn-row .btn { flex: 1 1 calc(50% - 6px); min-width: 140px; }
+  .search { min-width: 100%; width: 100%; }
+  .tabs { width: 100%; }
+  .tab { flex: 1 1 auto; text-align: center; min-height: 54px; justify-content: center; }
+  .toolbar { align-items: stretch; }
+  .card { padding: 14px; }
+  .note-choices { max-width: none; width: 100%; }
+  .note-choice { flex: 1 1 100%; min-height: 40px; }
+  .notes-input, .order-input { max-width: none; min-width: 0; width: 100%; }
+  .table-wrap { overflow: visible; margin: 0 -2px; }
+  table { border-collapse: separate; border-spacing: 0; }
+  thead { display: none; }
+  tbody tr {
+    display: block; background: #fff; border: 1px solid var(--line);
+    border-radius: 14px; padding: 12px 12px 8px; margin-bottom: 12px;
+    box-shadow: 0 8px 22px rgba(18,32,25,.05);
+  }
+  tbody tr:has(.empty) {
+    background: transparent; border: 0; box-shadow: none; padding: 8px 0; margin: 0;
+  }
+  tbody td {
+    display: grid; grid-template-columns: 92px minmax(0, 1fr);
+    gap: 8px 10px; align-items: start; border-bottom: 0; padding: 8px 0;
+  }
+  tbody td::before {
+    content: attr(data-label); color: var(--muted);
+    font-size: .78rem; font-weight: 700; padding-top: 6px; line-height: 1.3;
+  }
+  tbody td.empty { display: block; text-align: center; padding: 24px 8px !important; }
+  tbody td.empty::before { content: none; }
+  tbody td.actions {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding-top: 10px; margin-top: 4px; border-top: 1px dashed var(--line);
+  }
+  tbody td.actions::before { flex: 1 0 100%; padding-top: 0; }
+  tbody td.actions .btn, tbody td.actions a.btn {
+    flex: 1 1 calc(50% - 6px); min-height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-align: center; text-decoration: none;
+  }
+  .work-choices { width: 100%; }
+  .work-choice { flex: 1 1 calc(33% - 6px); min-height: 40px; }
+  .phone-link { font-size: 1.05rem; padding: 4px 0; }
+}
+@media (max-width: 420px) {
+  .btn-row .btn { flex: 1 1 100%; }
+  tbody td.actions .btn, tbody td.actions a.btn { flex: 1 1 100%; }
+  tbody td { grid-template-columns: 78px minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="brand-mark">رائد الحربي</p>
+        <h1>العملاء</h1>
+        <p id="live-counts" class="muted" style="margin:8px 0 0;font-weight:700;color:var(--accent)">العدد المحفوظ: —</p>
+      </div>
+      <button id="refresh-btn" class="btn secondary" type="button">تحديث</button>
+    </header>
+
+    <div id="error-banner" class="error-banner"></div>
+
+    <div id="persistence-banner" class="card" style="margin-bottom:14px;display:none;border-color:rgba(157,58,45,.35);background:rgba(157,58,45,.06)">
+      <h3 style="margin-top:0;color:var(--danger)">التخزين مؤقت — يتصفر بعد إعادة التشغيل</h3>
+      <p class="muted" id="persistence-banner-text" style="margin-bottom:0">أضف Persistent Disk في Render على المسار <code>/var/data</code> ثم Environment: <code>CUSTOMERS_DATA_DIR=/var/data/kobri</code>. قبل أي نشر: نزّل بكب.</p>
+    </div>
+
+    <details class="card backup-panel" id="backup-panel" style="margin-bottom:14px" open>
+      <summary>النسخ الاحتياطي وجلب السابق</summary>
+      <div>
+        <p class="muted">قبل أي نشر جديد: نزّل بكب. بعد النشر: استورد الملف. زر Interakt يجلب <strong>الأرقام والأسماء فقط</strong>.</p>
+        <p class="muted" id="persistence-line" style="margin-top:8px">حالة الحفظ: —</p>
+        <div class="btn-row">
+          <button id="export-customers" class="btn primary" type="button">تنزيل بكب</button>
+          <button id="backup-now" class="btn secondary" type="button">حفظ نسخة الآن</button>
+          <button id="sync-interakt" class="btn secondary" type="button">جلب من Interakt (30 يوم)</button>
+        </div>
+        <label class="field" style="margin-top:14px">
+          <span>استيراد بكب (الصق محتوى ملف JSON)</span>
+          <textarea id="import-json" rows="4" placeholder='{"customers":[...]}'></textarea>
+        </label>
+        <button id="import-customers" class="btn secondary" type="button">استيراد ودمج</button>
+        <p id="backup-status" class="status" hidden></p>
+      </div>
+    </details>
+
+    <div class="card" id="bulk-followup-card" style="margin-bottom:14px">
+      <h3 style="margin:0 0 6px;font-size:1.05rem">متابعة جماعية — أخذ رابط التمويل</h3>
+      <p class="muted" style="margin-bottom:12px">
+        يرسل فقط لعملاء «أخذ رابط التمويل»، بتأخير آمن وحد يومي لتقليل خطر الحظر.
+      </p>
+      <label class="field">
+        <span>نص الرسالة</span>
+        <textarea id="bulk-followup-message" rows="4" placeholder="السلام عليكم..."></textarea>
+      </label>
+      <div class="btn-row" style="margin-bottom:12px;align-items:end">
+        <label class="field" style="margin:0;flex:1;min-width:140px">
+          <span>التأخير بين الرسائل (ثانية) — الأقل 8</span>
+          <input id="bulk-followup-delay-sec" type="number" min="8" step="1" value="10" />
+        </label>
+        <label class="field" style="margin:0;flex:1;min-width:140px">
+          <span>حد الدفعة (أقصى 30)</span>
+          <input id="bulk-followup-limit" type="number" min="1" max="30" step="1" value="30" />
+        </label>
+      </div>
+      <p class="muted" id="bulk-followup-quota" style="margin:0 0 12px">الحصة اليومية: —</p>
+      <div class="btn-row">
+        <button id="bulk-followup-send" class="btn primary" type="button">إرسال متابعة جماعية</button>
+        <button id="bulk-followup-refresh" class="btn secondary" type="button">تحديث الحصة</button>
+      </div>
+      <p id="bulk-followup-status" class="status" hidden></p>
+    </div>
+
+    <div class="toolbar">
+      <div class="tabs" id="customer-tabs">
+        <button class="tab active" data-day="today" type="button">
+          <span class="tab-label">اليوم</span>
+          <span class="tab-count" id="tab-count-today">—</span>
+        </button>
+        <button class="tab" data-day="yesterday" type="button">
+          <span class="tab-label">أمس</span>
+          <span class="tab-count" id="tab-count-yesterday">—</span>
+        </button>
+        <button class="tab" data-day="all" type="button">
+          <span class="tab-label">الكل</span>
+          <span class="tab-count" id="tab-count-all">—</span>
+        </button>
+        <button class="tab" data-day="finance_link" type="button">
+          <span class="tab-label">أخذ رابط التمويل</span>
+          <span class="tab-count" id="tab-count-finance_link">—</span>
+        </button>
+        <button class="tab" data-day="order_number" type="button">
+          <span class="tab-label">رقم طلب</span>
+          <span class="tab-count" id="tab-count-order_number">—</span>
+        </button>
+        <button class="tab" data-day="package" type="button">
+          <span class="tab-label">أخذ باقة</span>
+          <span class="tab-count" id="tab-count-package">—</span>
+        </button>
+        <button class="tab" data-day="limit_exhausted" type="button">
+          <span class="tab-label">مستنفذ حد</span>
+          <span class="tab-count" id="tab-count-limit_exhausted">—</span>
+        </button>
+        <button class="tab" data-day="service_stop" type="button">
+          <span class="tab-label">إيقاف خدمات</span>
+          <span class="tab-count" id="tab-count-service_stop">—</span>
+        </button>
+        <button class="tab" data-day="archive" type="button">
+          <span class="tab-label">أرشيف</span>
+          <span class="tab-count" id="tab-count-archive">—</span>
+        </button>
+      </div>
+      <input id="customer-search" class="search" type="search" placeholder="بحث برقم الجوال أو الطلب أو جهة العمل أو وش صار أو ملاحظة" />
+    </div>
+    <div class="btn-row" id="followup-filter-row" style="margin:-4px 0 12px;display:none">
+      <button type="button" class="btn secondary small followup-filter active" data-followup-filter="all">الكل</button>
+      <button type="button" class="btn secondary small followup-filter" data-followup-filter="pending">لم تُرسل متابعة</button>
+      <button type="button" class="btn secondary small followup-filter" data-followup-filter="sent">تمت المتابعة</button>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <p class="muted" id="customers-meta" style="margin:0">—</p>
+        <div class="btn-row">
+          <button id="copy-today-phones" class="btn secondary small" type="button">نسخ أرقام اليوم</button>
+          <button id="load-more-customers" class="btn secondary small" type="button" hidden>تحميل المزيد</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>رقم الجوال</th>
+              <th>تاريخ الإرسال</th>
+              <th>جهة العمل</th>
+              <th>رقم الطلب</th>
+              <th>وش صار</th>
+              <th>ملاحظات</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="customers-body">
+            <tr><td colspan="7" class="empty">جاري تحميل العملاء...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+(() => {
+  const UI_VERSION = "2026-08-14-followup-badge";
+  const NOTE_OUTCOMES = [
+    { id: "finance_link", label: "أخذ رابط التمويل" },
+    { id: "package", label: "أخذ باقة" },
+    { id: "limit_exhausted", label: "مستنفذ حد" },
+    { id: "service_stop", label: "إيقاف خدمات" },
+    { id: "order_number", label: "رقم طلب" },
+  ];
+  const OUTCOME_TAB_LABELS = {
+    finance_link: "أخذ رابط التمويل",
+    order_number: "رقم طلب",
+    package: "أخذ باقة",
+    limit_exhausted: "مستنفذ حد",
+    service_stop: "إيقاف خدمات",
+  };
+  const PAGE_SIZE = 100;
+  let customerDay = "today";
+  let customersCache = [];
+  let customersHasMore = false;
+  let followupFilter = "all"; // all | pending | sent
+
+  try {
+    const url = new URL(location.href);
+    if (url.searchParams.get("v") !== UI_VERSION) {
+      url.searchParams.set("v", UI_VERSION);
+      location.replace(url.toString());
+      return;
+    }
+  } catch {}
+
+  const refreshBtn = document.getElementById("refresh-btn");
+  const customerSearch = document.getElementById("customer-search");
+  const errorBanner = document.getElementById("error-banner");
+
+  try {
+    const backupPanel = document.getElementById("backup-panel");
+    if (backupPanel && window.matchMedia("(max-width: 720px)").matches) {
+      backupPanel.open = false;
+    }
+  } catch (_) {}
+
+  function showError(msg) {
+    if (!msg) {
+      errorBanner.style.display = "none";
+      errorBanner.textContent = "";
+      return;
+    }
+    errorBanner.style.display = "block";
+    errorBanner.textContent = msg;
+  }
+
+  async function api(path, options = {}) {
+    const res = await fetch(`/admin/api${path}`, {
+      ...options,
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {}),
+      },
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || json.ok === false) {
+      const base = json.error || `HTTP ${res.status}`;
+      throw new Error(json.hint ? `${base} — ${json.hint}` : base);
+    }
+    return json;
+  }
+
+  function formatTime(ts) {
+    if (!ts) return "—";
+    const d = typeof ts === "number" ? new Date(ts) : new Date(ts);
+    if (Number.isNaN(d.getTime())) return "—";
+    return d.toLocaleString("ar-SA", {
+      timeZone: "Asia/Riyadh",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+  function looksLikeFollowupMessage(text) {
+    const s = String(text || "");
+    return /هل تم تقديم الطلب/i.test(s) || /ارسل رقم الطلب/i.test(s);
+  }
+  /** نفس منطق التخطي في السيرفر: متابعة خلال 20 ساعة */
+  function followupStatusOf(row, withinHours = 20) {
+    if (!looksLikeFollowupMessage(row?.lastOutboundPreview)) {
+      return { sent: false, label: "لم تُرسل متابعة", at: null };
+    }
+    const at = row.lastOutboundAt ? Date.parse(row.lastOutboundAt) : NaN;
+    if (!Number.isFinite(at)) {
+      return { sent: true, label: "تمت المتابعة", at: row.lastOutboundAt || null };
+    }
+    const ageMs = Date.now() - at;
+    const windowMs = withinHours * 60 * 60 * 1000;
+    if (ageMs <= windowMs) {
+      return {
+        sent: true,
+        recent: true,
+        label: "تمت المتابعة",
+        at: row.lastOutboundAt,
+      };
+    }
+    return {
+      sent: true,
+      recent: false,
+      label: "متابعة سابقة",
+      at: row.lastOutboundAt,
+    };
+  }
+  function followupBadgesHtml(row) {
+    const st = followupStatusOf(row);
+    if (st.sent) {
+      return `<span class="badge followed">${st.label}</span>` +
+        (st.at ? `<div class="meta-line">آخر متابعة: ${formatTime(st.at)}</div>` : "");
+    }
+    return `<span class="badge pending-follow">لم تُرسل متابعة</span>`;
+  }
+  function displayPhone(row) {
+    const phone = row.phone || "";
+    return phone.startsWith("0") ? phone : `0${phone}`;
+  }
+  function whatsappE164(row) {
+    let phone = String(row.phone || "").replace(/\D/g, "");
+    if (phone.startsWith("0")) phone = phone.slice(1);
+    if (phone.startsWith("966")) return phone;
+    const cc = String(row.countryCode || "+966").replace(/\D/g, "") || "966";
+    return `${cc}${phone}`;
+  }
+  function whatsappUrl(row) {
+    const phone = whatsappE164(row);
+    const ua = navigator.userAgent || "";
+    const isAndroid = /Android/i.test(ua);
+    if (isAndroid) {
+      const fallback = encodeURIComponent(`https://wa.me/${phone}`);
+      return `intent://send/?phone=${phone}#Intent;scheme=whatsapp;package=com.whatsapp.w4b;S.browser_fallback_url=${fallback};end`;
+    }
+    return `whatsapp://send?phone=${phone}`;
+  }
+  function phoneWhatsAppLink(row) {
+    const label = escapeHtml(displayPhone(row));
+    const href = escapeHtml(whatsappUrl(row));
+    return `<a class="phone-link" href="${href}" rel="noopener noreferrer" title="فتح واتساب بزنس">${label}</a>`;
+  }
+  function workplaceChoiceOf(row) {
+    const job = row.jobCategory;
+    const sub = row.civilianSubtype;
+    if (job === "military") return "military";
+    if (job === "civilian" && (sub === "government" || sub === "gov")) return "government";
+    if (job === "civilian" && sub === "private") return "private";
+    return "";
+  }
+  function workplaceLabel(row) {
+    const choice = workplaceChoiceOf(row);
+    if (choice === "government") return "حكومي";
+    if (choice === "private") return "خاص";
+    if (choice === "military") return "عسكري";
+    if (row.companyName) return String(row.companyName);
+    if (row.jobCategory === "retired") return "متقاعد";
+    return "";
+  }
+  function workplaceChoicesHtml(row) {
+    const selected = workplaceChoiceOf(row);
+    const opts = [
+      { id: "government", label: "حكومي" },
+      { id: "private", label: "خاص" },
+      { id: "military", label: "عسكري" },
+    ];
+    const buttons = opts
+      .map((o) => {
+        const active = selected === o.id ? " active" : "";
+        return `<button type="button" class="work-choice${active}" data-act="workplace" data-workplace="${o.id}" data-phone="${row.phone}">${o.label}</button>`;
+      })
+      .join("");
+    const company = row.companyName
+      ? `<div class="meta-line">${escapeHtml(row.companyName)}</div>`
+      : "";
+    return `<div class="work-choices">${buttons}</div>${company}`;
+  }
+  function noteOutcomeOf(row) {
+    const outcome = String(row.outcome || "").trim();
+    if (NOTE_OUTCOMES.some((o) => o.label === outcome)) return outcome;
+    // توافق مع بيانات قديمة كانت داخل notes
+    const notes = String(row.notes || "").trim();
+    const hit = NOTE_OUTCOMES.find((o) => o.label === notes);
+    return hit ? hit.label : "";
+  }
+  function notesChoicesHtml(row) {
+    const selected = noteOutcomeOf(row);
+    const buttons = NOTE_OUTCOMES.map((o) => {
+      const active = selected === o.label ? " active" : "";
+      return `<button type="button" class="note-choice${active}" data-act="outcome" data-outcome="${escapeHtml(o.label)}" data-phone="${row.phone}">${o.label}</button>`;
+    }).join("");
+    return `<div class="work-choices note-choices">${buttons}</div>`;
+  }
+  function sendDateOf(row) {
+    return row.lastInboundAt || row.lastSeenAt || row.syncedAt || row.firstSeenAt || null;
+  }
+  function escapeHtml(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function updateTabCounts(counts) {
+    const today = counts?.today ?? counts?.customersToday;
+    const yesterday = counts?.yesterday ?? counts?.customersYesterday;
+    const all = counts?.all ?? counts?.customersAll;
+    const archive = counts?.archive ?? counts?.customersArchive;
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value == null || value === "" ? "—" : String(value);
+    };
+    set("tab-count-today", today);
+    set("tab-count-yesterday", yesterday);
+    set("tab-count-all", all);
+    set("tab-count-finance_link", counts?.finance_link ?? counts?.customersFinanceLink);
+    set("tab-count-order_number", counts?.order_number ?? counts?.customersOrderNumber);
+    set("tab-count-package", counts?.package ?? counts?.customersPackage);
+    set("tab-count-limit_exhausted", counts?.limit_exhausted ?? counts?.customersLimitExhausted);
+    set("tab-count-service_stop", counts?.service_stop ?? counts?.customersServiceStop);
+    set("tab-count-archive", archive);
+  }
+
+  function updateLiveCounts(counts, persistence) {
+    const el = document.getElementById("live-counts");
+    if (!el) return;
+    const all = counts?.customersAll ?? counts?.all ?? persistence?.count ?? 0;
+    const today = counts?.customersToday ?? counts?.today ?? "—";
+    const yesterday = counts?.customersYesterday ?? counts?.yesterday ?? "—";
+    const disk = persistence?.durable ? "قرص دائم" : "تخزين مؤقت";
+    el.textContent = `العدد المحفوظ: ${all} · اليوم ${today} · أمس ${yesterday} · ${disk}`;
+    el.style.color = Number(all) > 0 ? "var(--accent)" : "var(--danger)";
+    updateTabCounts(counts);
+  }
+
+  function updatePersistenceUi(persistence) {
+    const banner = document.getElementById("persistence-banner");
+    const line = document.getElementById("persistence-line");
+    if (!persistence) {
+      if (banner) banner.style.display = "none";
+      if (line) line.textContent = "حالة الحفظ: غير متاحة";
+      return;
+    }
+    if (banner) banner.style.display = persistence.durable ? "none" : "block";
+    if (line) {
+      line.textContent = persistence.durable
+        ? `حالة الحفظ: قرص دائم · ${persistence.count || 0} عميل محفوظ · ${persistence.dataDir || ""}`
+        : `حالة الحفظ: مؤقت (يُمسح بعد إعادة التشغيل/النشر) · ${persistence.count || 0} عميل · ${persistence.dataDir || ""}`;
+      line.style.color = persistence.durable ? "var(--accent)" : "var(--danger)";
+    }
+  }
+
+  function setCustomerTab(day) {
+    customerDay = day;
+    document.querySelectorAll("#customer-tabs .tab").forEach((t) => {
+      t.classList.toggle("active", t.dataset.day === customerDay);
+    });
+    const filterRow = document.getElementById("followup-filter-row");
+    if (filterRow) {
+      filterRow.style.display = customerDay === "finance_link" ? "flex" : "none";
+    }
+  }
+
+  function renderCustomers(rows, counts) {
+    const body = document.getElementById("customers-body");
+    const q = (customerSearch.value || "").trim().toLowerCase();
+    let filtered = !q
+      ? rows.slice()
+      : rows.filter((r) => {
+          const hay = [
+            r.phone,
+            displayPhone(r),
+            workplaceLabel(r),
+            r.orderNumber,
+            r.outcome,
+            r.notes,
+            r.lastInboundText,
+          ].join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+
+    if (customerDay === "finance_link" && followupFilter !== "all") {
+      filtered = filtered.filter((r) => {
+        const sent = followupStatusOf(r).sent;
+        return followupFilter === "sent" ? sent : !sent;
+      });
+    }
+
+    if (!filtered.length) {
+      const all = counts?.all || 0;
+      const tip = all
+        ? " جرّب تبويب «الكل» أو فلتر المتابعة."
+        : " اضغط «جلب من Interakt» أو انتظر رسائل واتساب، أو استورد بكب.";
+      body.innerHTML = `<tr><td colspan="7" class="empty">لا يوجد عملاء في هذا التبويب.${tip}</td></tr>`;
+      return;
+    }
+
+    body.innerHTML = filtered.map((row) => {
+      const paused = row.paused;
+      const orderNumber = escapeHtml(row.orderNumber || "");
+      const freeNotes = escapeHtml(row.notes || "");
+      return `<tr>
+        <td data-label="الجوال">
+          ${phoneWhatsAppLink(row)}
+          <div class="meta-line">${paused ? '<span class="badge paused">موقوف</span>' : '<span class="badge active">نشط</span>'}</div>
+          <div class="meta-line" style="margin-top:6px">${followupBadgesHtml(row)}</div>
+        </td>
+        <td data-label="تاريخ الإرسال">${formatTime(sendDateOf(row))}</td>
+        <td data-label="جهة العمل">${workplaceChoicesHtml(row)}</td>
+        <td data-label="رقم الطلب">
+          <input class="order-input" data-order-phone="${row.phone}" type="text" inputmode="numeric" maxlength="8" placeholder="101xxxxx" value="${orderNumber}" />
+        </td>
+        <td data-label="وش صار">${notesChoicesHtml(row)}</td>
+        <td data-label="ملاحظات">
+          <textarea class="notes-input" data-notes-phone="${row.phone}" rows="2" placeholder="اكتب ملاحظة حرة...">${freeNotes}</textarea>
+        </td>
+        <td class="actions" data-label="إجراءات">
+          <a class="btn secondary small" href="${escapeHtml(whatsappUrl(row))}" rel="noopener noreferrer">واتساب بزنس</a>
+          <button class="btn primary small" data-act="ask-order" data-phone="${row.phone}" type="button" title="يرسل: السلام عليكم / هل تم تقديم الطلب / ارسل رقم الطلب">سؤال عن الطلب</button>
+          <button class="btn secondary small" data-act="${row.archived ? "unarchive" : "archive"}" data-phone="${row.phone}" type="button">${row.archived ? "إلغاء الأرشفة" : "أرشفة"}</button>
+          <button class="btn secondary small" data-act="menu" data-phone="${row.phone}" type="button">قائمة</button>
+          <button class="btn ${paused ? "secondary" : "danger"} small" data-act="${paused ? "resume" : "pause"}" data-phone="${row.phone}" type="button">${paused ? "تشغيل" : "إيقاف"}</button>
+          <button class="btn ghost small" data-act="reset" data-phone="${row.phone}" type="button">تصفير</button>
+        </td>
+      </tr>`;
+    }).join("");
+  }
+
+  function setCustomersMeta(pack, counts) {
+    const shown = customersCache.length;
+    const total = pack.count || shown;
+    const dayLabel =
+      pack.day === "all"
+        ? "كل السجل"
+        : pack.day === "archive"
+          ? "الأرشيف"
+          : OUTCOME_TAB_LABELS[pack.day] || pack.outcome || pack.day;
+    document.getElementById("customers-meta").textContent =
+      `عرض ${shown} من ${total} · ${dayLabel} · ${pack.timezone || "Asia/Riyadh"}` +
+      ` · الكل ${counts.all ?? "—"}` +
+      (counts.today != null ? ` · اليوم ${counts.today}` : "") +
+      (counts.archive != null ? ` · أرشيف ${counts.archive}` : "");
+    const moreBtn = document.getElementById("load-more-customers");
+    if (moreBtn) moreBtn.hidden = !customersHasMore;
+    updateTabCounts(counts);
+  }
+
+  async function refreshCustomers({ append = false } = {}) {
+    const body = document.getElementById("customers-body");
+    if (!append) {
+      body.innerHTML = `<tr><td colspan="7" class="empty">جاري تحميل العملاء...</td></tr>`;
+    }
+    const offset = append ? customersCache.length : 0;
+    let pack = await api(
+      `/customers?day=${encodeURIComponent(customerDay)}&limit=${PAGE_SIZE}&offset=${offset}`
+    );
+    if (
+      !append &&
+      customerDay === "today" &&
+      !(pack.customers || []).length &&
+      (pack.counts?.all || 0) > 0
+    ) {
+      setCustomerTab("all");
+      pack = await api(`/customers?day=all&limit=${PAGE_SIZE}&offset=0`);
+    }
+    const page = pack.customers || [];
+    customersCache = append ? customersCache.concat(page) : page;
+    customersHasMore = Boolean(pack.hasMore);
+    const counts = pack.counts || {};
+    if (pack.persistence) updatePersistenceUi(pack.persistence);
+    updateLiveCounts(counts, pack.persistence);
+    setCustomersMeta(pack, counts);
+    renderCustomers(customersCache, counts);
+    showError("");
+  }
+
+  function applyBulkFollowupDefaults(status) {
+    const safe = status?.outboundSafe || {};
+    const msg = document.getElementById("bulk-followup-message");
+    if (msg && !msg.dataset.touched) {
+      msg.value = status?.followUpPreview || msg.value || "";
+    }
+    const delay = document.getElementById("bulk-followup-delay-sec");
+    if (delay && !delay.dataset.touched) {
+      const sec = Math.max(Math.round((safe.delayMs || status?.outboundDelayMs || 10000) / 1000), 8);
+      delay.value = String(sec);
+      delay.min = String(Math.max(Math.round((safe.minDelayMs || 8000) / 1000), 8));
+    }
+    const limit = document.getElementById("bulk-followup-limit");
+    if (limit && !limit.dataset.touched) {
+      limit.value = String(safe.maxBatchSize || 30);
+      limit.max = String(safe.maxBatchSize || 30);
+    }
+    const quota = document.getElementById("bulk-followup-quota");
+    if (quota) {
+      const sent = safe.dailySent ?? 0;
+      const daily = safe.dailyLimit ?? 80;
+      const rem = safe.dailyRemaining ?? Math.max(daily - sent, 0);
+      quota.textContent =
+        `الحصة اليومية: أُرسل ${sent} من ${daily} · المتبقي ${rem}` +
+        ` · تخطّي من توبع خلال ${safe.skipIfFollowedUpWithinHours ?? 20} ساعة`;
+    }
+  }
+
+  async function refreshAll() {
+    try {
+      const status = await api("/status");
+      updatePersistenceUi(status.persistence);
+      updateLiveCounts(status.counts, status.persistence);
+      applyBulkFollowupDefaults(status);
+    } catch (_) {
+      /* تحميل العملاء يكفي */
+    }
+    await refreshCustomers();
+  }
+
+  async function runAction(act, phone, extra = {}) {
+    if (!phone) return;
+    if (act === "workplace") {
+      const row = customersCache.find((r) => r.phone === phone) || {};
+      const current = workplaceChoiceOf(row);
+      const next = extra.workplace || "";
+      const workplace = current && current === next ? "clear" : next;
+      await api("/customers/workplace", {
+        method: "POST",
+        body: JSON.stringify({ phone, workplace }),
+      });
+      await refreshCustomers({ append: false });
+      return;
+    }
+    if (act === "outcome") {
+      const row = customersCache.find((r) => r.phone === phone) || {};
+      const current = noteOutcomeOf(row);
+      const next = String(extra.outcome || "").trim();
+      const outcome = current && current === next ? "" : next;
+      await api("/customers/outcome", {
+        method: "POST",
+        body: JSON.stringify({ phone, outcome }),
+      });
+      if (row) row.outcome = outcome;
+      await refreshCustomers({ append: false });
+      return;
+    }
+    if (act === "ask-order") {
+      await api("/send-followup", { method: "POST", body: JSON.stringify({ phone }) });
+      alert("تم إرسال سؤال التقديم للعميل");
+      await refreshCustomers({ append: false });
+      return;
+    }
+    if (act === "archive" || act === "unarchive") {
+      await api("/customers/archive", {
+        method: "POST",
+        body: JSON.stringify({ phone, archived: act === "archive" }),
+      });
+      await refreshCustomers({ append: false });
+      return;
+    }
+    if (act === "menu") await api("/send-menu", { method: "POST", body: JSON.stringify({ phone }) });
+    if (act === "pause") await api("/pause", { method: "POST", body: JSON.stringify({ phone }) });
+    if (act === "resume") await api("/resume", { method: "POST", body: JSON.stringify({ phone }) });
+    if (act === "reset") await api("/reset", { method: "POST", body: JSON.stringify({ phone }) });
+    await refreshCustomers({ append: false });
+  }
+
+  function setBackupStatus(msg) {
+    const el = document.getElementById("backup-status");
+    el.hidden = false;
+    el.textContent = msg;
+  }
+
+  refreshBtn.addEventListener("click", () => {
+    refreshAll().catch((e) => {
+      showError(e.message);
+      alert(e.message);
+    });
+  });
+
+  document.getElementById("customer-tabs").addEventListener("click", async (e) => {
+    const tab = e.target.closest(".tab");
+    if (!tab) return;
+    setCustomerTab(tab.dataset.day);
+    await refreshCustomers({ append: false }).catch((err) => {
+      showError(err.message);
+      alert(err.message);
+    });
+  });
+
+  customerSearch.addEventListener("input", () => renderCustomers(customersCache));
+
+  document.getElementById("followup-filter-row")?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-followup-filter]");
+    if (!btn) return;
+    followupFilter = btn.dataset.followupFilter || "all";
+    document.querySelectorAll(".followup-filter").forEach((b) => {
+      b.classList.toggle("active", b === btn);
+      b.classList.toggle("primary", b === btn);
+      b.classList.toggle("secondary", b !== btn);
+    });
+    renderCustomers(customersCache);
+  });
+
+  document.getElementById("load-more-customers").addEventListener("click", async () => {
+    try {
+      await refreshCustomers({ append: true });
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  document.getElementById("copy-today-phones").addEventListener("click", async () => {
+    try {
+      const pack = await api("/customers?day=today&phonesOnly=1");
+      const phones = (pack.phones || []).map((r) => displayPhone(r)).join("\n");
+      await navigator.clipboard.writeText(phones || "");
+      alert(phones ? `تم نسخ ${pack.count} رقم` : "لا توجد أرقام اليوم");
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  document.getElementById("export-customers").addEventListener("click", async () => {
+    try {
+      const res = await fetch("/admin/api/customers/export", { credentials: "same-origin" });
+      if (!res.ok) throw new Error("فشل التنزيل");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `customers-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      setBackupStatus("تم تنزيل ملف البكب — احفظه عندك قبل أي نشر");
+    } catch (err) {
+      setBackupStatus(err.message);
+    }
+  });
+
+  document.getElementById("backup-now").addEventListener("click", async () => {
+    try {
+      const r = await api("/customers/backup", { method: "POST", body: "{}" });
+      setBackupStatus(`تم الحفظ: ${r.summary?.counts?.all || 0} عميل`);
+      await refreshAll();
+    } catch (err) {
+      setBackupStatus(err.message);
+    }
+  });
+
+  document.getElementById("sync-interakt").addEventListener("click", async () => {
+    try {
+      setBackupStatus("جاري الجلب من Interakt...");
+      const r = await api("/customers/sync-interakt", {
+        method: "POST",
+        body: JSON.stringify({ days: 30 }),
+      });
+      updatePersistenceUi(r.persistence);
+      const savedOk = r.saved?.ok !== false;
+      setBackupStatus(
+        `Interakt: جلب ${r.fetched || 0} رقم · جديد ${r.created || 0} · محدّث ${r.updated || 0}` +
+          (savedOk ? " · تم الحفظ على القرص" : " · فشل الحفظ على القرص") +
+          (r.persistence?.durable ? " · تخزين دائم" : " · تخزين مؤقت") +
+          (r.hint ? ` — ${r.hint}` : "")
+      );
+      setCustomerTab(r.preferDay || (r.fetched > 0 ? "today" : "all"));
+      await refreshAll();
+    } catch (err) {
+      setBackupStatus(err.message);
+    }
+  });
+
+  document.getElementById("import-customers").addEventListener("click", async () => {
+    try {
+      const raw = document.getElementById("import-json").value.trim();
+      if (!raw) throw new Error("الصق محتوى ملف البكب أولًا");
+      const payload = JSON.parse(raw);
+      const r = await api("/customers/import", {
+        method: "POST",
+        body: JSON.stringify(payload),
+      });
+      setBackupStatus(
+        `تم الاستيراد: جديد/مدمج ${r.imported || 0} · محدّث ${r.updated || 0} · الإجمالي ${r.total || 0}`
+      );
+      await refreshAll();
+    } catch (err) {
+      setBackupStatus(err.message);
+    }
+  });
+
+  async function saveNotesField(input) {
+    const phone = input?.dataset?.notesPhone;
+    if (!phone) return;
+    const notes = String(input.value || "");
+    const current = (customersCache.find((r) => r.phone === phone) || {}).notes || "";
+    if (notes === current) return;
+    input.disabled = true;
+    try {
+      await api("/customers/notes", {
+        method: "POST",
+        body: JSON.stringify({ phone, notes }),
+      });
+      const row = customersCache.find((r) => r.phone === phone);
+      if (row) row.notes = notes;
+      input.style.borderColor = "var(--accent)";
+      setTimeout(() => { input.style.borderColor = ""; }, 700);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      input.disabled = false;
+    }
+  }
+
+  async function saveOrderField(input) {
+    const phone = input?.dataset?.orderPhone;
+    if (!phone) return;
+    const orderNumber = String(input.value || "").replace(/\D/g, "");
+    const current = (customersCache.find((r) => r.phone === phone) || {}).orderNumber || "";
+    if (orderNumber === current) return;
+    if (orderNumber && !/^101\d{5}$/.test(orderNumber)) {
+      alert("رقم الطلب يجب أن يكون 8 أرقام ويبدأ بـ 101");
+      input.value = current;
+      return;
+    }
+    input.disabled = true;
+    try {
+      await api("/customers/order-number", {
+        method: "POST",
+        body: JSON.stringify({ phone, orderNumber }),
+      });
+      const row = customersCache.find((r) => r.phone === phone);
+      if (row) row.orderNumber = orderNumber || null;
+      input.value = orderNumber;
+      input.style.borderColor = "var(--accent)";
+      setTimeout(() => { input.style.borderColor = ""; }, 700);
+    } catch (err) {
+      alert(err.message);
+      input.value = current;
+    } finally {
+      input.disabled = false;
+    }
+  }
+
+  document.getElementById("customers-body").addEventListener("click", async (e) => {
+    const btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    try {
+      await runAction(btn.dataset.act, btn.dataset.phone, {
+        workplace: btn.dataset.workplace || "",
+        outcome: btn.dataset.outcome || "",
+      });
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  document.getElementById("customers-body").addEventListener("focusout", (e) => {
+    const notes = e.target.closest("textarea.notes-input");
+    if (notes) {
+      saveNotesField(notes);
+      return;
+    }
+    const order = e.target.closest("input.order-input");
+    if (order) saveOrderField(order);
+  });
+
+  document.getElementById("customers-body").addEventListener("keydown", (e) => {
+    const notes = e.target.closest("textarea.notes-input");
+    if (notes && e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      notes.blur();
+      return;
+    }
+    const order = e.target.closest("input.order-input");
+    if (order && e.key === "Enter") {
+      e.preventDefault();
+      order.blur();
+    }
+  });
+
+  const bulkMsg = document.getElementById("bulk-followup-message");
+  const bulkDelay = document.getElementById("bulk-followup-delay-sec");
+  const bulkLimit = document.getElementById("bulk-followup-limit");
+  [bulkMsg, bulkDelay, bulkLimit].forEach((el) => {
+    if (!el) return;
+    el.addEventListener("input", () => {
+      el.dataset.touched = "1";
+    });
+  });
+
+  document.getElementById("bulk-followup-refresh").addEventListener("click", async () => {
+    try {
+      const status = await api("/status");
+      applyBulkFollowupDefaults(status);
+      const st = document.getElementById("bulk-followup-status");
+      st.hidden = false;
+      st.className = "status ok";
+      st.textContent = "تم تحديث الحصة والإعدادات";
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  document.getElementById("bulk-followup-send").addEventListener("click", async () => {
+    const statusEl = document.getElementById("bulk-followup-status");
+    const delaySec = Math.max(Number(bulkDelay.value || 10), 8);
+    const limit = Math.min(Math.max(Number(bulkLimit.value || 30), 1), 30);
+    const message = String(bulkMsg.value || "").trim();
+    if (!message) {
+      alert("اكتب نص رسالة المتابعة أولًا");
+      return;
+    }
+    const ok = confirm(
+      `إرسال متابعة جماعية لعملاء «أخذ رابط التمويل»؟\n` +
+        `التأخير: ${delaySec} ثانية · حد الدفعة: ${limit}\n` +
+        `سيُتخطى من أُرسلت له متابعة مؤخرًا.`
+    );
+    if (!ok) return;
+
+    statusEl.hidden = false;
+    statusEl.className = "status";
+    statusEl.textContent = "جاري الإرسال الجماعي... قد يستغرق وقتًا بسبب التأخير الآمن";
+    const sendBtn = document.getElementById("bulk-followup-send");
+    sendBtn.disabled = true;
+    try {
+      const result = await api("/bulk-followup", {
+        method: "POST",
+        body: JSON.stringify({
+          fromOutcome: "finance_link",
+          message,
+          delayMs: delaySec * 1000,
+          limit,
+        }),
+      });
+      statusEl.className = "status ok";
+      statusEl.textContent =
+        `تم: ${result.sent || 0} | فشل: ${result.failed || 0} | تخطّي: ${result.skipped || 0}` +
+        (result.deferred ? ` | مؤجّل: ${result.deferred}` : "") +
+        ` | متبقي اليوم: ${result.dailyRemaining ?? "—"}` +
+        (result.hint ? ` — ${result.hint}` : "");
+      await refreshAll();
+    } catch (err) {
+      statusEl.className = "status";
+      statusEl.style.color = "var(--danger)";
+      statusEl.textContent = err.message;
+    } finally {
+      sendBtn.disabled = false;
+    }
+  });
+
+  refreshAll().catch((err) => {
+    showError(err.message);
+    document.getElementById("customers-body").innerHTML =
+      `<tr><td colspan="7" class="empty">تعذر التحميل: ${escapeHtml(err.message)}</td></tr>`;
+  });
+})();
+</script>
+</body>
+</html>

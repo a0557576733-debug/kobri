@@ -1,0 +1,24 @@
+{
+  "name": "kobri",
+  "version": "1.0.0",
+  "description": "الكوبري — حاسبة التمويل + ربط Interakt (نسخة عبدالرحمن)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test:calc": "node scripts/test-calc.js",
+    "test:webhook": "node scripts/test-webhook-parse.js",
+    "test:debt": "node scripts/test-debt.js",
+    "test:menu": "node scripts/test-main-menu.js",
+    "test:amounts": "node scripts/test-amount-examples.js",
+    "test:admin": "node scripts/test-admin.js",
+    "test:ledger": "node scripts/test-customer-ledger.js",
+    "test:combo": "node scripts/test-combo-exhausted.js",
+    "backup:customers": "node -e \"require('./lib/customer-ledger').createCustomerLedger().createSnapshot('cli')\"",
+    "test": "npm run test:calc && npm run test:webhook && npm run test:debt && npm run test:menu && npm run test:amounts && npm run test:admin && npm run test:ledger && npm run test:combo"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.22.2"
+  }
+}

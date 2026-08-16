@@ -1,0 +1,31 @@
+# رفع الكوبري على Render
+# New → Blueprint → ربط GitHub → اختر مستودع الكوبري
+#
+# بقاء العملاء بعد تحديث الصفحة / إعادة التشغيل / النشر:
+# - هذا الملف يضيف Persistent Disk على /var/data
+# - التطبيق يحفظ سجل العملاء في /var/data/kobri
+# - إن أنشأت الخدمة يدويًا: من Render → Disks → Mount path=/var/data
+#   ثم Environment: CUSTOMERS_DATA_DIR=/var/data/kobri
+services:
+  - type: web
+    name: finance-calc-kobri
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: kobri-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: INTERAKT_API_KEY
+        sync: false
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: CUSTOMERS_DATA_DIR
+        value: /var/data/kobri
