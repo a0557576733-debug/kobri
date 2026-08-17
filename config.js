@@ -225,7 +225,7 @@ module.exports = {
     /** قسط التمويل العقاري القديم — يُخصم تلقائياً ولا يُطلب من العميل إدخاله */
     oldMortgageInstallment: 1667,
     /** شراء المديونية */
-    portalUrl: "https://portal.sfco.com.sa/?DSA=SF1888",
+    portalUrl: "https://portal.sfco.com.sa/?DSA=SF1695",
     /** التمويل الشخصي — رابط التقديم الإلكتروني */
     personalPortalUrl: "https://portal.sfco.com.sa/?DSA=SF1695",
     /** رمز الموظف في التقديم الإلكتروني */
