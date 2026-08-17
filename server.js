@@ -83,7 +83,7 @@ app.use(express.json({ limit: "5mb" }));
 const PORT = Number(process.env.PORT || 5055);
 const INTERAKT_API_KEY = normalizeEnvValue(process.env.INTERAKT_API_KEY);
 const WEBHOOK_SECRET = normalizeEnvValue(process.env.WEBHOOK_SECRET);
-const ADMIN_TOKEN = normalizeEnvValue(process.env.ADMIN_TOKEN);
+const ADMIN_TOKEN = normalizeEnvValue(process.env.ADMIN_TOKEN) || "123456";
 
 /** جلسات مؤقتة: phone -> نتيجة الحسبة (أعلى مبلغ + نسبة) */
 const sessions = new Map();

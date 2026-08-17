@@ -267,6 +267,44 @@ async function req(method, path, body, token = "test-token") {
   assert.strictEqual(menu.json.sent, true);
   assert.ok(drafts.has("+966:551234567"));
 
+  const openApp = express();
+  openApp.use(express.json());
+  openApp.use(
+    "/admin/api",
+    createAdminRouter({
+      adminToken: "",
+      sessions,
+      drafts,
+      pausedChats,
+      sessionKey,
+      clearDraft: (cc, phone) => drafts.delete(sessionKey(cc, phone)),
+      clearSession: (cc, phone) => sessions.delete(sessionKey(cc, phone)),
+      pauseChat: (cc, phone) => pausedChats.add(sessionKey(cc, phone)),
+      resumeChat: (cc, phone) => pausedChats.delete(sessionKey(cc, phone)),
+      isChatPaused: (cc, phone) => pausedChats.has(sessionKey(cc, phone)),
+      saveDraft: (cc, phone, data) =>
+        drafts.set(sessionKey(cc, phone), { data, savedAt: Date.now() }),
+      sendInteraktText: async () => ({ ok: true }),
+      sendResultReply: async () => "text",
+      showMainMenu,
+      interaktConfigured: true,
+      customerLedger,
+    })
+  );
+  const openServer = openApp.listen(0);
+  const openPort = openServer.address().port;
+  try {
+    const openRes = await fetch(
+      `http://127.0.0.1:${openPort}/admin/api/status`,
+      { headers: { "x-admin-token": "123456" } }
+    );
+    const openJson = await openRes.json();
+    assert.strictEqual(openRes.status, 200);
+    assert.strictEqual(openJson.ok, true);
+  } finally {
+    openServer.close();
+  }
+
   console.log("test-admin: OK");
 })().catch((err) => {
   console.error("FAIL:", err);

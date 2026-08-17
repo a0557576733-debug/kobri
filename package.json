@@ -4,7 +4,7 @@
   "description": "الكوبري — حاسبة التمويل + ربط Interakt (نسخة عبدالرحمن)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node scripts/ensure-env.js && node server.js",
     "test:calc": "node scripts/test-calc.js",
     "test:webhook": "node scripts/test-webhook-parse.js",
     "test:debt": "node scripts/test-debt.js",
