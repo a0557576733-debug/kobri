@@ -60,6 +60,11 @@ assert.strictEqual(parseMainMenuChoice("رقم المساعد"), "7");
 assert.strictEqual(parseMainMenuChoice("إيقاف الرد الآلي"), null);
 assert.strictEqual(parseMainMenuChoice("xyz"), null);
 
+const invalidMenu = handleMainMenuChoice("__invalid__");
+assert.ok(invalidMenu.reply.includes("الرجاء الرد"));
+assert.ok(invalidMenu.interactive);
+assert.strictEqual(invalidMenu.draft.step, "awaiting_choice");
+
 const personal = handleMainMenuChoice("1");
 assert.strictEqual(personal.startFlow, "personal");
 const debt = handleMainMenuChoice("2");

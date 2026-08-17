@@ -575,7 +575,7 @@ app.post("/webhook/interakt", async (req, res) => {
         clearSession(countryCode, phone);
         result = menuResult;
       } else if (menuResult.startFlow === "personal") {
-        result = startPersonalFinanceFlow();
+        result = startPersonalFinanceFlow({ askSector: true });
         saveDraft(countryCode, phone, result.draft);
       } else if (menuResult.startFlow === "debt") {
         result = startDebtPurchaseFlow();
@@ -668,7 +668,7 @@ app.post("/webhook/interakt", async (req, res) => {
       }
     } else if (looksLikeStartPersonalFinance(text)) {
       clearSession(countryCode, phone);
-      result = startPersonalFinanceFlow();
+      result = startPersonalFinanceFlow({ askSector: true });
       saveDraft(countryCode, phone, result.draft);
     } else if (looksLikeStartDebtPurchase(text)) {
       clearSession(countryCode, phone);
@@ -771,7 +771,7 @@ app.post("/webhook/interakt", async (req, res) => {
         pauseChat(countryCode, phone);
         result = menuResult;
       } else if (menuResult.startFlow === "personal") {
-        result = startPersonalFinanceFlow();
+        result = startPersonalFinanceFlow({ askSector: true });
         saveDraft(countryCode, phone, result.draft);
       } else if (menuResult.startFlow === "debt") {
         result = startDebtPurchaseFlow();
@@ -780,6 +780,13 @@ app.post("/webhook/interakt", async (req, res) => {
         result = menuResult;
         if (result.draft) saveDraft(countryCode, phone, result.draft);
       }
+    } else if (
+      draft?.flow === "main_menu" &&
+      draft.step === "awaiting_choice"
+    ) {
+      // ما اختار من القائمة — نعيد الخيارات بدل الصمت
+      result = handleMainMenuChoice("__invalid__");
+      if (result.draft) saveDraft(countryCode, phone, result.draft);
     } else {
       return;
     }

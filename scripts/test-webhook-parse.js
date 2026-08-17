@@ -83,8 +83,8 @@ check("mapSector يفهم مدني مع رمز السهم", () => {
 
 check("ضغط مدني يكمل لسؤال الراتب", () => {
   const start = startPersonalFinanceFlow();
-  assert.strictEqual(start.reply, null);
-  assert.strictEqual(start.interactive, null);
+  assert.strictEqual(start.reply, "اختر");
+  assert.strictEqual(start.interactive?.kind, "buttons");
   const subtype = advancePersonalFinanceFlow(start.draft, "مدني");
   assert.strictEqual(subtype.draft.step, "civilian_subtype");
   const next = advancePersonalFinanceFlow(subtype.draft, "حكومي");
@@ -235,6 +235,24 @@ check("سؤال العقاري يرسل قائمة تفاعلية", () => {
   assert.strictEqual(parseRealEstateChoice("re_none"), "none");
   assert.strictEqual(parseRealEstateChoice("لا يوجد عقاري"), "none");
   assert.strictEqual(realEstateInteractive().button, "اختر النوع");
+});
+
+check("اختيار قائمة رئيسية يقرأ menu_id", () => {
+  const got = extractIncomingMessage({
+    type: "message_received",
+    data: {
+      customer: { phone_number: "500000009", country_code: "+966" },
+      message: {
+        message_content_type: "InteractiveListReply",
+        message: "مرحبا معاك عبدالرحمن الرشيدي.",
+        interactive: {
+          type: "list_reply",
+          list_reply: { id: "menu_2", title: "شراء مديونية" },
+        },
+      },
+    },
+  });
+  assert.strictEqual(got.text, "menu_2");
 });
 
 if (!process.exitCode) {
