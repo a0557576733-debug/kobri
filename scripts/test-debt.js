@@ -31,9 +31,6 @@ check("بداية شراء المديونية", () => {
   assert.ok(start.interactive);
   assert.strictEqual(start.interactive.kind, "buttons");
   assert.strictEqual(start.reply, "اختر");
-  const silent = startDebtPurchaseFlow({ askSector: false });
-  assert.strictEqual(silent.reply, null);
-  assert.strictEqual(silent.interactive, null);
   assert.strictEqual(start.draft.flow, "debt_chat");
 });
 

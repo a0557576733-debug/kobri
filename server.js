@@ -532,7 +532,7 @@ app.post("/webhook/interakt", async (req, res) => {
         draft?.step === "awaiting_choice" ||
         !draft)
     ) {
-      // زر «تقدم بتمويلك الآن» — لازم نسأل القطاع (ما نعتمد على Auto Reply)
+      // زر «تقدم بتمويلك الآن» — الكوبري يسأل القطاع مباشرة
       clearSession(countryCode, phone);
       result = startPersonalFinanceFlow({ askSector: true });
       saveDraft(countryCode, phone, result.draft);
