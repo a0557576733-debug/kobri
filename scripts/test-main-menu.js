@@ -100,8 +100,9 @@ const stopAgentYes = advanceServiceStopFlow(
   { flow: "main_menu", step: "awaiting_service_stop_agent" },
   "نعم"
 );
-assert.strictEqual(stopAgentYes.silent, true);
-assert.ok(!stopAgentYes.reply);
+assert.ok(!stopAgentYes.silent);
+assert.match(stopAgentYes.reply, /أبو شايع/);
+assert.match(stopAgentYes.reply, /0562393866/);
 assert.ok(!stopAgentYes.interactive);
 
 const stopQualifyNo = advanceServiceStopFlow(stopStart.draft, "لا");

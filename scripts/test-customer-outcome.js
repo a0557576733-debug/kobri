@@ -43,7 +43,7 @@ assert.strictEqual(
 assert.strictEqual(
   detectCustomerOutcome({
     offer: "service_stop_accepted",
-    silent: true,
+    reply: "للتواصل مع المندوب",
   }),
   OUTCOMES.SERVICE_STOP
 );
