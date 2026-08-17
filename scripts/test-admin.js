@@ -6,8 +6,8 @@ const { createAdminRouter, normalizePhoneParts } = require("../lib/admin-routes"
 const { showMainMenu } = require("../lib/main-menu");
 const { createCustomerLedger } = require("../lib/customer-ledger");
 
-const parts = normalizePhoneParts({ phone: "0501812339" });
-assert.strictEqual(parts.phone, "501812339");
+const parts = normalizePhoneParts({ phone: "0562393866" });
+assert.strictEqual(parts.phone, "562393866");
 assert.strictEqual(parts.countryCode, "+966");
 
 const sessions = new Map();

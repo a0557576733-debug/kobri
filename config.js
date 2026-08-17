@@ -18,17 +18,17 @@ module.exports = {
   brand: {
     name: "عبدالرحمن الرشيدي",
     contactPhone: "0562393866",
-    contactHint: "من طرف رائد الحربي",
+    contactHint: "من طرف عبدالرحمن الرشيدي",
     /** أرقام المساعدين — خيار «رقم المساعد» في القائمة */
     assistants: [
       { name: "ماجد", phone: "0507009290" },
     ],
     /** عدّل نصوص الخيارات 2 و 4 و 5 من هنا */
     debtPurchaseInfo: `لطلب شراء المديونية فضلاً تواصل معنا على الرقم:
-0501812339
+0562393866
 
 وأرسل:
-من طرف رائد الحربي — شراء مديونية`,
+من طرف عبدالرحمن الرشيدي — شراء مديونية`,
     workingHours: `ساعات ووقت الدوام الرسمي:
 
 من الأحد إلى الخميس
@@ -243,12 +243,12 @@ module.exports = {
     branchEmployeePhone: "0507009290",
     /** باقة عقاري + شخصي — عند قبول العرض والتواصل */
     propertyComboAgentName: "أبو شايع",
-    propertyComboAgentPhone: "0501812339",
-    propertyComboContactFooter: "من طرف رائد الحربي\nربي يسر أمرك",
+    propertyComboAgentPhone: "0562393866",
+    propertyComboContactFooter: "من طرف عبدالرحمن الرشيدي\nربي يسر أمرك",
     /** إيقاف الخدمات — المندوب عند رغبة العميل بالتواصل */
     serviceStopAgentName: "أبو شايع",
-    serviceStopAgentPhone: "0501812339",
-    serviceStopContactHint: "من طرف رائد الحربي",
+    serviceStopAgentPhone: "0562393866",
+    serviceStopContactHint: "من طرف عبدالرحمن الرشيدي",
   },
 
   // ---------------------------------------------------------------------------
@@ -365,7 +365,7 @@ module.exports = {
     nonText:
       "الرد على الأسئلة يكون بالكتابة (اكتب رقم الخيار أو نص الإجابة).",
 
-    start: `مرحبا معاك رائد الحربي.
+    start: `مرحبا معاك عبدالرحمن الرشيدي.
 
 مانوع استفسارك؟
 
@@ -682,15 +682,15 @@ ${url}`;
       `رقم المساعد — ${name}:
 ${phone}
 
-رائد الحربي`,
+عبدالرحمن الرشيدي`,
 
     assistantContacts: (assistants = []) => {
       const lines = (assistants || [])
         .filter((a) => a && a.name && a.phone)
         .map((a) => `رقم المساعد — ${a.name}:\n${a.phone}`);
       if (!lines.length) {
-        return `رقم المساعد — رائد الحربي:
-0501812339`;
+        return `رقم المساعد — عبدالرحمن الرشيدي:
+0562393866`;
       }
       return lines.join("\n\n");
     },
@@ -838,12 +838,12 @@ ${portalUrl}
 ${phone}
 
 شاكرين تواصلكم.
-رائد الحربي`,
+عبدالرحمن الرشيدي`,
 
     serviceStopAgentContact: (agentName, agentPhone, attribution) =>
       `للتواصل مع المندوب ${agentName}:
 ${agentPhone}
-${attribution || "من طرف رائد الحربي"}`,
+${attribution || "من طرف عبدالرحمن الرشيدي"}`,
 
     serviceStopDeclined: () => "تشرفنا بك وبالتوفيق",
 
@@ -862,7 +862,7 @@ ${attribution || "من طرف رائد الحربي"}`,
 2- لا`,
 
     applicationCompleteNoEmployee:
-      "شكراً لك. بالتوفيق في إجراءات التقديم.\n\nرائد الحربي",
+      "شكراً لك. بالتوفيق في إجراءات التقديم.\n\nعبدالرحمن الرشيدي",
 
     propertySuccess: (phone, hint) =>
       `أنت مؤهل مبدئيًا للاستكمال.
