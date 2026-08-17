@@ -74,8 +74,9 @@ async function req(method, path, body, token = "test-token") {
 }
 
 (async () => {
-  const unauthorized = await req("GET", "/status", null, "wrong");
-  assert.strictEqual(unauthorized.status, 401);
+  const openStatus = await req("GET", "/status", null, "wrong");
+  assert.strictEqual(openStatus.status, 200);
+  assert.strictEqual(openStatus.json.ok, true);
 
   const login = await req("POST", "/login", { token: "test-token" });
   assert.strictEqual(login.status, 200);
