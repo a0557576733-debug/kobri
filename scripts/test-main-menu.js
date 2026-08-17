@@ -74,9 +74,9 @@ assert.strictEqual(amounts.draft.step, "awaiting_amount_examples_sector");
 const hours = handleMainMenuChoice("5");
 assert.ok(hours.reply.includes("الأحد") || hours.reply.includes("دوام"));
 const assistant = handleMainMenuChoice("7");
-assert.ok(assistant.reply.includes("ماجد"));
-assert.ok(assistant.reply.includes("0507009290"));
-assert.ok(!assistant.reply.includes("0531240724"));
+assert.ok(assistant.reply.includes("عبدالرحمن"));
+assert.ok(assistant.reply.includes("0595243553"));
+assert.ok(!assistant.reply.includes("0507009290"));
 
 const {
   startServiceStopFlow,

@@ -21,7 +21,7 @@ module.exports = {
     contactHint: "من طرف عبدالرحمن الرشيدي",
     /** أرقام المساعدين — خيار «رقم المساعد» في القائمة */
     assistants: [
-      { name: "ماجد", phone: "0507009290" },
+      { name: "عبدالرحمن", phone: "0595243553" },
     ],
     /** عدّل نصوص الخيارات 2 و 4 و 5 من هنا */
     debtPurchaseInfo: `لطلب شراء المديونية فضلاً تواصل معنا على الرقم:
@@ -231,16 +231,16 @@ module.exports = {
     /** رمز الموظف في التقديم الإلكتروني */
     personalEmployeeCode: "SF1695",
     employeeName: "عبدالرحمن",
-    employeePhone: "0507009290",
+    employeePhone: "0595243553",
     /** التمويل الشخصي — تقديم إلكتروني واستفسارات المسار الشخصي */
     personalAgentName: "عبدالرحمن",
     personalAgentPhone: "0531240724",
     /** شراء المديونية — بعد موافقة العميل على الإكمال */
-    debtPurchaseAgentName: "ماجد",
-    debtPurchaseAgentPhone: "0507009290",
+    debtPurchaseAgentName: "عبدالرحمن",
+    debtPurchaseAgentPhone: "0595243553",
     /** زيارة الفرع — بعد اختيار التقديم بالفرع */
-    branchEmployeeName: "ماجد",
-    branchEmployeePhone: "0507009290",
+    branchEmployeeName: "عبدالرحمن",
+    branchEmployeePhone: "0595243553",
     /** باقة عقاري + شخصي — عند قبول العرض والتواصل */
     propertyComboAgentName: "أبو شايع",
     propertyComboAgentPhone: "0562393866",
