@@ -28,6 +28,6 @@ assert.match(reply, /تم استلام رقم الطلب/);
 assert.match(reply, /أقرب وقت ممكن/);
 assert.match(reply, /لمتابعة الطلب/);
 assert.match(reply, /عبدالرحمن/);
-assert.match(reply, /0531240724/);
+assert.match(reply, /0595243553/);
 
 console.log("OK: order number ack (101 + 8 digits)");
