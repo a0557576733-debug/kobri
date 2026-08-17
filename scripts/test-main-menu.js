@@ -71,7 +71,7 @@ assert.ok(hours.reply.includes("الأحد") || hours.reply.includes("دوام")
 const assistant = handleMainMenuChoice("7");
 assert.ok(assistant.reply.includes("ماجد"));
 assert.ok(assistant.reply.includes("0507009290"));
-assert.ok(!assistant.reply.includes("0562393866"));
+assert.ok(!assistant.reply.includes("0531240724"));
 
 const {
   startServiceStopFlow,
