@@ -318,6 +318,10 @@ module.exports = {
     electronicMessage: `السلام عليكم
 هل تم تقديم الطلب
 في حال تم التقديم ارسل رقم الطلب`,
+    plusMessage: `السلام عليكم
+نأسف لعدم تقديمكم للطلب`,
+    templateName: "",
+    templateLanguage: "ar",
   },
 
   /**
